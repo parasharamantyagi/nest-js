@@ -13,7 +13,8 @@ export class UsersController {
 
   @Get('/one')
   async findAll(@Req() request: Request, @Res() res: Response): Promise<any> {
-    let results = { status: request.query.check ? request.query.check : 1, data: this.appService.findAll() };
+    let allusers = await this.appService.findAll();
+    let results = { status: request.query.check ? request.query.check : 1, data: allusers };
     return res.status(HttpStatus.OK).json(results);
   }
 }
