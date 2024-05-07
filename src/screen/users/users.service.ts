@@ -18,7 +18,7 @@ export class UsersService {
   private readonly users: User[] = [];
 
   async findAll(): Promise<User[]> {
-    let result = await this.usersRepository.find();
+    let result = await this.usersRepository.find({ select: { id: true, name: true, posts: { id: true, title: true } }, relations: ['posts'] });
     return result;
   }
 }
