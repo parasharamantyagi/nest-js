@@ -3,10 +3,11 @@ import { PostsService } from './posts.service';
 
 @Controller('posts')
 export class PostsController {
-  constructor(private readonly appService: PostsService) {}
+  constructor(private readonly appService: PostsService) { }
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async getPost(): Promise<any> {
+    let allusers = await this.appService.findAll();
+    return allusers;
   }
 }

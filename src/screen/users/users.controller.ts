@@ -7,7 +7,7 @@ export class UsersController {
   constructor(private readonly appService: UsersService) { }
 
   @Get()
-  getHello(@Res() res: Response) {
+  getUser(@Res() res: Response) {
     return res.status(HttpStatus.OK).json("This is users body");
   }
 

@@ -17,10 +17,6 @@ export class UsersService {
 
   private readonly users: User[] = [];
 
-  getHello(): string {
-    return 'Hello World UsersService!';
-  }
-
   async findAll(): Promise<User[]> {
     let result = await this.usersRepository.find();
     return result;
