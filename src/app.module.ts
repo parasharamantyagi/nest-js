@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { GqlModuleOptions, GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ScreenModule } from './screen/screen.module';
@@ -9,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { User } from './screen/users/user.entity';
 import { Post } from './screen/posts/posts.entity';
+import { GraphModule } from './graphQl/graph.module';
 
 @Module({
   imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot({
@@ -21,21 +20,7 @@ import { Post } from './screen/posts/posts.entity';
     entities: [User, Post],
     synchronize: true,
   }),
-  GraphQLModule.forRootAsync({
-    driver: ApolloDriver, // <--- "driver" should be here, as shown in the docs
-    imports: [ConfigModule],
-    useFactory: async (config: ConfigService) => {
-      return {
-        autoSchemaFile: 'schema.gql',
-        sortSchema: true,
-        debug: (config.get<string>('NODE_ENV') !== 'production') as boolean,
-        uploads: false,
-        path: '/graphql',
-        introspection: config.get<boolean>('GRAPHQL_INTROSPECTION', false),
-      } as GqlModuleOptions;
-    },
-    inject: [ConfigService],
-  }),
+    GraphModule,
     ScreenModule],
   controllers: [AppController],
   providers: [AppService],

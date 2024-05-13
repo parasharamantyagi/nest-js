@@ -2,6 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Article {
+  description: String!
+  title: String!
+}
+
 type Query {
   getHello: String!
+  getStaticObject: Article!
 }
