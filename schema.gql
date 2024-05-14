@@ -8,12 +8,21 @@ type Article {
   description: String!
 }
 
+type Post {
+  id: Int!
+  title: String!
+  content: String!
+  authorId: String!
+}
+
 type Query {
   getHello: String!
   getStaticObject: Article!
   userList: [Article!]!
+  getPosts: [Post!]!
 }
 
 type Mutation {
   setUser(id: Int!): String!
+  getPost: Post!
 }

@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { DataSource } from 'typeorm';
 import { UserService } from './users/users.service';
 import { loggerMiddleware } from './logger.Middleware';
+import { PostResolver } from './posts/posts.resolvers';
+import { PostService } from './posts/posts.service';
 
 @Module({
   imports: [
@@ -35,7 +37,7 @@ import { loggerMiddleware } from './logger.Middleware';
     //   inject: [ConfigService],
     // })
   ],
-  providers: [AppService, UserService],
+  providers: [AppService, UserService, PostResolver,PostService],
 })
 
 export class GraphModule {

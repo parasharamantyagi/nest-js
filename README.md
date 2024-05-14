@@ -71,3 +71,24 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+
+## Graph Ql
+{
+  getHello
+}
+
+{
+  getPosts {
+    id
+    title
+    content
+    authorId
+  }
+}
+
+
+mutation {
+  setUser(id: 1)
+}
