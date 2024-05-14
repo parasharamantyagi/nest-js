@@ -3,11 +3,17 @@
 # ------------------------------------------------------
 
 type Article {
-  description: String!
+  id: Int!
   title: String!
+  description: String!
 }
 
 type Query {
   getHello: String!
   getStaticObject: Article!
+  userList: [Article!]!
+}
+
+type Mutation {
+  setUser(id: Int!): String!
 }

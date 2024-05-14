@@ -15,6 +15,7 @@ export class AppService {
   @Query(returns => Article) // <-- Use the GraphQL type Article as the return type
   getStaticObject(): Article { // <-- Method to return static object
     return {
+      id: 2,
       title: 'Static Object',
       description: 'This is a static object returned from GraphQL query.',
     };
