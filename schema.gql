@@ -24,5 +24,5 @@ type Query {
 
 type Mutation {
   setUser(id: Int!): String!
-  getPost: Post!
+  getPost(id: String!): Post!
 }

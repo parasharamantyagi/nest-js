@@ -92,3 +92,11 @@ Nest is [MIT licensed](LICENSE).
 mutation {
   setUser(id: 1)
 }
+
+mutation {
+  getPost(
+      id: "1"
+    ) {
+      title
+    }
+}

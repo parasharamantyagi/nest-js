@@ -1,4 +1,4 @@
-import { Resolver, Query, ResolveField, Parent, Mutation } from '@nestjs/graphql';
+import { Resolver, Query, ResolveField, Parent, Mutation, Args } from '@nestjs/graphql';
 import { Post } from './posts.dto';
 import { PostService } from './posts.service';
 
@@ -19,8 +19,8 @@ export class PostResolver {
   }
 
   @Mutation(() => Post)
-  async getPost(@Parent() post: Post) {
-    const postId = post.id; // Assuming authorId is a field in Post model
-    return await this.postService.findById(postId);
+  async getPost(@Args({ name: 'id', type: () => String }) id: string) {
+    // const postId = post.id; // Assuming authorId is a field in Post model
+    return await this.postService.findById(id);
   }
 }
