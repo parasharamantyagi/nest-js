@@ -6,8 +6,9 @@ import { ScreenModule } from './screen/screen.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { User } from './screen/users/user.entity';
-import { Post } from './screen/posts/posts.entity';
+import { Post as Post123} from './screen/posts/posts.entity';
 import { GraphModule } from './graphQl/graph.module';
+import { Post } from './graphQl/posts/posts.dto';
 
 @Module({
   imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot({
@@ -17,7 +18,7 @@ import { GraphModule } from './graphQl/graph.module';
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
-    entities: [User, Post],
+    entities: [User, Post123, Post],
     synchronize: true,
   }),
     GraphModule,

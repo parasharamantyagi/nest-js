@@ -95,8 +95,10 @@ mutation {
 
 mutation {
   getPost(
-      id: "1"
+      id: "node"
     ) {
+    	id
       title
+    	description
     }
 }

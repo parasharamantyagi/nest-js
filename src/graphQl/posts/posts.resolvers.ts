@@ -1,9 +1,9 @@
-import { Resolver, Query, ResolveField, Parent, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Query, ResolveField, Parent, Mutation, Args, Int } from '@nestjs/graphql';
 import { Post } from './posts.dto';
 import { PostService } from './posts.service';
 
 
-@Resolver('Post')
+@Resolver(of => Post)
 export class PostResolver {
   constructor(
     private readonly postService: PostService
@@ -16,6 +16,11 @@ export class PostResolver {
     //   { id: '1', title: 'First Post', content: 'Content of the first post', authorId: '1' },
     //   { id: '2', title: 'Second Post', content: 'Content of the second post', authorId: '2' }
     // ]
+  }
+
+  @Query(returns => Post, { nullable: true })
+  async post(@Args('id', { type: () => Int }) id: number): Promise<Post> {
+    return this.postService.findOne(id);
   }
 
   @Mutation(() => Post)
