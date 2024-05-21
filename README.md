@@ -102,3 +102,11 @@ mutation {
     	description
     }
 }
+
+query {
+  post(id: 1) {
+    id
+    title
+    description
+  }
+}
