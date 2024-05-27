@@ -7,8 +7,9 @@ export class UsersController {
   constructor(private readonly appService: UsersService) { }
 
   @Get()
-  getUser(@Res() res: Response) {
-    return res.status(HttpStatus.OK).json("This is users body");
+  async getUser(@Res() res: Response): Promise<any> {
+    let post = await this.appService.findOne('okk');
+    return res.status(HttpStatus.OK).json(post);
   }
 
   @Get('/one')

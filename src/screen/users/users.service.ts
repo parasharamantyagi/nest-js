@@ -19,7 +19,7 @@ export class UsersService {
 
   async findAll(): Promise<User[]> {
     
-    return await this.usersRepository.find({ where: { id: In([2]) }, select: { id: true, name: true, posts: { id: true, title: true, description: true, created_at: true } }, relations: ['posts'] });
+    return await this.usersRepository.find({ where: { id: In([1]) }, select: { id: true, name: true, posts: { id: true, title: true, description: true, created_at: true } }, relations: ['posts'] });
   }
 
   async findOne(name: string): Promise<User> {
