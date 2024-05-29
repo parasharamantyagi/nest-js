@@ -26,9 +26,6 @@ export class PostService {
   }
 
   async findById(id: string): Promise<Post | undefined> {
-    // In a real application, this method might interact with a database to find a post by its ID
-    // let okk = await this.postRepository.findOne({ where: { title: id } });
-    // console.log(okk);
     return { id: 1, title: 'First Post', description: 'Content of the first post', created_at: new Date(), updated_at: new Date() }
     // this.posts.find(post => post.id === id);
   }

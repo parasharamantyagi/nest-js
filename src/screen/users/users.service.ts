@@ -14,11 +14,9 @@ export class UsersService {
     @InjectRepository(User)
     private usersRepository: Repository<User>
   ) { }
-
   private readonly users: User[] = [];
 
   async findAll(): Promise<User[]> {
-    
     return await this.usersRepository.find({ where: { id: In([1]) }, select: { id: true, name: true, posts: { id: true, title: true, description: true, created_at: true } }, relations: ['posts'] });
   }
 
